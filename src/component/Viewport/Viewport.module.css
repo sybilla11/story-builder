@@ -1,0 +1,172 @@
+/* @font-face {
+  font-family: mono-black;
+  src: url("/fonts/otf/mono-black.otf");
+}
+@font-face {
+  font-family: mono-regular;
+  src: url("/fonts/otf/mono-regular.otf");
+}
+
+@font-face {
+  font-family: sans-black;
+  src: url("/fonts/otf/sans-black.otf");
+} */
+
+.Frame {
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  grid-template-rows: 15% 70% 15%;
+  z-index: 1;
+  height: 100vh;
+}
+.loadingFrame {
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  grid-template-rows: 15% 70% 15%;
+  z-index: 1;
+  height: 100vh;
+  background-color: #ffc100;
+}
+.loading {
+  border: 1rem none;
+  padding-top: 20%;
+  background-color: #916f04;
+  grid-column: 2 / span 12;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  font-family: sans-black;
+  font-weight: bold;
+  font-size: 3.75rem;
+  color: #ffc100;
+  text-align: center;
+}
+.Main {
+  position: relative;
+  border-left-style: solid;
+  border-width: 1rem;
+  width: 100%;
+  display: block;
+  height: auto;
+  grid-column: 2 / span 12;
+  grid-row-start: 2;
+}
+.TophrLine {
+  height: 1rem;
+  margin-top: 0px;
+  width: 95%;
+  background-color: black;
+  border: none;
+}
+
+.Title {
+  text-align: center;
+  margin-top: 5%;
+  grid-column: 3 / span 10;
+  font-family: sans-black;
+  font-weight: bold;
+  font-size: 3.75rem;
+  line-height: 1;
+}
+.FlexBox {
+  display: flex;
+  width: 80%;
+  left: 10%;
+  margin-top: 2%;
+  margin-left: 5%;
+  height: 60%;
+  overflow: hidden;
+  grid-column: 4 / span 8;
+}
+.Body {
+  font-family: "Grandstander", cursive;
+  /* font-family: mono-regular; */
+  font-size: large;
+  font-size: 0.8125rem;
+  line-height: 1.46;
+  width: 50%;
+  display: inline-block;
+  order: 1;
+  text-align: left;
+  padding: 2%;
+  height: auto;
+}
+.Body2 {
+  font-family: "Grandstander", cursive;
+  font-size: large;
+  line-height: 1.46;
+  width: 100%;
+  column-count: 2;
+  column-gap: 6%;
+  text-align: left;
+  padding: 2%;
+  vertical-align: top;
+}
+.Body2 p {
+  margin-top: 0;
+}
+.StoryImage {
+  display: inline-block;
+  width: 50%;
+  order: 2;
+  height: auto;
+}
+.bottomDiv {
+  bottom: 0;
+  width: 100%;
+  position: absolute;
+  display: flex;
+}
+.MiddleDiv {
+  border-bottom: 1rem solid black;
+  display: inline-block;
+  order: 2;
+  width: 100%;
+}
+.buttonLeft,
+.buttonRight {
+  width: auto;
+  display: inline-block;
+  font-family: sans-black;
+  font-size: 3rem;
+  line-height: 0;
+  position: relative;
+  padding-right: 3%;
+  padding-left: 3%;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.buttonLeft {
+  order: 1;
+}
+.buttonRight {
+  order: 3;
+}
+.rightDiv {
+  display: block;
+  position: relative;
+  grid-row-start: 2;
+  left: 5%;
+  grid-column: 13 / span 1;
+  height: 100%;
+  width: 60px;
+  margin-left: 50%;
+  bottom: 0;
+  float: left;
+}
+.Linkindex {
+  text-align: right;
+  height: 15%;
+  font-family: sans-black;
+  font-size: 6.25rem;
+  line-height: 74px;
+  padding-left: 20px;
+  width: 100%;
+}
+.rightBottomDiv {
+  order: 3;
+  width: 90%;
+  margin-top: 20%;
+  padding-left: 2%;
+  height: 82%;
+  border-right: 1rem solid black;
+}
