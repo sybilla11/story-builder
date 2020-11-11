@@ -1,9 +1,12 @@
 import React from "react";
-import styles from "./Viewport.module.css";
+import styles from "./Viewport.module.scss";
 
 const Viewport = (props) => {
   return (
     <div className={styles.Frame}>
+     <div class="leaf">
+     <div>  <img src="http://www.pngmart.com/files/1/Fall-Autumn-Leaves-Transparent-PNG.png" height="75px" width="75px"></img></div>
+     <div><img src="http://www.pngmart.com/files/1/Autumn-Fall-Leaves-Pictures-Collage-PNG.png" height="75px" width="75px"></img></div></div>
       <div className={styles.Main}>
         <hr className={styles.TophrLine} align="left" />
         <div className={styles.Title}>{props.title.toUpperCase()}</div>

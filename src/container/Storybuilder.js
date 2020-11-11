@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Viewport from "../component/Viewport/Viewport";
-import styles from "../component/Viewport/Viewport.module.css";
+import styles from "../component/Viewport/Viewport.module.scss";
 import axios from 'axios'
 
 class StoryBuilder extends Component {
@@ -47,39 +47,7 @@ class StoryBuilder extends Component {
           });
       });
   }
-    // fetch("data/empty.json")
-    // //fetch("data/story.json")
-    //   .then((res) => {
-    //   console.log('res', res)
-    //   return res.json();
-    //   }
-    //   )
-    //   .then(
-    //     (result) => {
-    //       console.log('result: '+result.length);
-    //       //checking empty json file. use (/data/empty.json) to test this scenario
-    //       if (result.length === 0) {
-    //         this.setState({
-    //           isLoaded: true,
-    //           isEmpty: true,
-    //         });
-    //       } else if (result.frames.length > 0) {
-    //         this.setState({
-    //           isLoaded: true,
-    //           items: result.frames,
-    //           linkindex: 1,
-    //           item: result.frames[0],
-    //         });
-    //       }
-    //     },
-    //     (error) => {
-    //       console.log(error);
-    //       this.setState({
-    //         isLoaded: true,
-    //         error:'error'
-    //       });
-    //     }
-    //   );
+ 
   
   render() {
     const { error, isLoaded, item, isEmpty } = this.state;

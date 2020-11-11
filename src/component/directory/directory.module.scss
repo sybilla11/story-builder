@@ -1,0 +1,11 @@
+@mixin displayCenter {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.select_dropdown {
+  @include displayCenter;
+  width: 50%;
+  margin-top: 40%;
+  left: 40%;
+}
