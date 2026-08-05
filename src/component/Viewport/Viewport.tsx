@@ -1,4 +1,6 @@
+import DOMPurify from "dompurify";
 import styles from "./Viewport.module.scss";
+import type { StoryButton } from "../../types/story";
 
 interface ViewportProps {
   title: string;
@@ -6,30 +8,18 @@ interface ViewportProps {
   body: string;
   img: string;
   isImage: boolean;
-  buttonLeft: boolean;
-  buttonLeftTitle: string;
-  buttonLeftIndx: number;
-  buttonRight: boolean;
-  buttonRightTitle: string;
-  buttonRightIndx: number;
-  buttonOnclick: (index: number) => void;
+  buttons: StoryButton[];
+  onButtonClick: (linkindex: number) => void;
 }
 
-const Viewport = ({
-  title,
-  linkindex,
-  body,
-  img,
-  isImage,
-  buttonLeft,
-  buttonLeftTitle,
-  buttonLeftIndx,
-  buttonRight,
-  buttonRightTitle,
-  buttonRightIndx,
-  buttonOnclick,
-}: ViewportProps) => {
+const Viewport = ({ title, linkindex, body, img, isImage, buttons, onButtonClick }: ViewportProps) => {
   const imgSrc = `${import.meta.env.BASE_URL}${img.replace(/^\//, "")}`;
+  // Story bodies ship as bundled app data, not user input, but they're still
+  // sanitized since they're rendered as raw HTML.
+  const sanitizedBody = DOMPurify.sanitize(body);
+  // The layout puts the first button on the right and the second on the
+  // left (matches the original design's left/right button placement).
+  const [rightButton, leftButton] = buttons;
 
   return (
     <div className={styles.Frame}>
@@ -39,26 +29,34 @@ const Viewport = ({
 
         {isImage ? (
           <div className={styles.FlexBox}>
-            <div className={styles.Body} dangerouslySetInnerHTML={{ __html: body }} />
+            <div className={styles.Body} dangerouslySetInnerHTML={{ __html: sanitizedBody }} />
             <img className={styles.StoryImage} src={imgSrc} alt={`Illustration for "${title}"`} />
           </div>
         ) : (
           <div className={styles.FlexBox}>
-            <div className={styles.Body2} dangerouslySetInnerHTML={{ __html: body }} />
+            <div className={styles.Body2} dangerouslySetInnerHTML={{ __html: sanitizedBody }} />
           </div>
         )}
 
         <div className={styles.bottomDiv}>
-          {buttonLeft ? (
-            <div className={styles.buttonLeft} onClick={() => buttonOnclick(buttonLeftIndx)}>
-              {buttonLeftTitle}
-            </div>
+          {leftButton ? (
+            <button
+              type="button"
+              className={styles.buttonLeft}
+              onClick={() => onButtonClick(leftButton.linkindex)}
+            >
+              {leftButton.text}
+            </button>
           ) : null}
           <div className={styles.MiddleDiv} />
-          {buttonRight ? (
-            <div className={styles.buttonRight} onClick={() => buttonOnclick(buttonRightIndx)}>
-              {buttonRightTitle}
-            </div>
+          {rightButton ? (
+            <button
+              type="button"
+              className={styles.buttonRight}
+              onClick={() => onButtonClick(rightButton.linkindex)}
+            >
+              {rightButton.text}
+            </button>
           ) : null}
         </div>
       </div>

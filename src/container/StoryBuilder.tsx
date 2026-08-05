@@ -15,9 +15,9 @@ const StoryBuilder = () => {
     setLinkindex(1);
   }, [theme]);
 
-  const handleButtonClick = (targetIndex: number) => {
-    setFrameIndex(targetIndex);
-    setLinkindex(targetIndex + 1);
+  const handleButtonClick = (nextLinkindex: number) => {
+    setFrameIndex(nextLinkindex);
+    setLinkindex(nextLinkindex + 1);
   };
 
   const withHomeLink = (content: ReactNode) => (
@@ -67,13 +67,8 @@ const StoryBuilder = () => {
         body={item.body}
         img={item.img ?? ""}
         isImage={item.img !== undefined}
-        buttonLeft={item.buttons.length > 1}
-        buttonLeftTitle={item.buttons.length > 1 ? item.buttons[1].text : ""}
-        buttonLeftIndx={item.buttons.length > 1 ? item.buttons[1].linkindex : 0}
-        buttonRight={item.buttons.length >= 1}
-        buttonRightTitle={item.buttons.length >= 1 ? item.buttons[0].text : ""}
-        buttonRightIndx={item.buttons.length >= 1 ? item.buttons[0].linkindex : 0}
-        buttonOnclick={handleButtonClick}
+        buttons={item.buttons}
+        onButtonClick={handleButtonClick}
       />
     </div>,
   );
